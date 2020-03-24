@@ -29,9 +29,9 @@ export default class PQRForm extends Component {
                 venueOfProject: '',
                 category: [],
                 projectType: '',
-                projectDuration: [], //Start and End
+                projectDurationStart: '',
+                projectDurationEnd: '',
                 isContinuingProject: false,
-                isPartnership: false,
                 partnerOrganization: '',
                 beneficiaries: '',
                 numBeneficiaries: 0,

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import '../css/form-step.css';
 import FormBoxes from './formboxes.component';
 
@@ -104,28 +106,135 @@ export default class ProjectSummaryForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <b><label htmlFor="club-name">Type:</label></b>
-                    <div className="input-group mb-3">
-                        <FormBoxes
-                            type="radio"
-                            radioGroup="type"
-                            options={this.PROJ_TYPE}
-                            handleChange={(event) => {
-                                let value = event.target.value
+                    <b><label htmlFor="projectType">Type:</label></b>
+                    <select className="form-control" id="projectType" onChange={(event) => {
+                        this.projectSummary.projectType = event.target.value
 
-                                if (event.target.checked) {
-                                    this.projectSummary.projectType = value
-                                } else {
-                                    this.projectSummary.projectType = []
-                                }
+                        this.props.handleChange("projectSummary", this.projectSummary)
+                    }} >
+                        {this.PROJ_TYPE.map((option)=>{
+                            return (
+                            <option value={option}>{option}</option>
+                            )
+                        })}
+                    </select>
+                </div>
 
-                                this.props.handleChange("projectSummary", this.projectSummary)
-                            }}
+                <div className="row">
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="projDuration">Project Duration:</label></b>
+                        <div className="row">
+                            <div className="col-sm">
+                                <b><label htmlFor="projectDurationStart">Start: </label></b>
+                                <DatePicker
+                                    selected={this.projectSummary.projectDurationStart}
+                                    onChange={ (date) => {
+                                        this.projectSummary.projectDurationStart = date;
+                                        this.props.handleChange("projectSummary", this.projectSummary)
+                                    }}
+                                    name="projectDurationStart"
+                                    dateFormat="yyyy-MM-dd"    
+                                    className="form-control"       
+                                />
+                            </div>
+                            <div className="col-sm">
+                                <b><label htmlFor="projectDurationEnd">End: </label></b>
+                                <DatePicker
+                                    selected={this.projectSummary.projectDurationEnd}
+                                    onChange={ (date) => {
+                                        this.projectSummary.projectDurationEnd = date;
+                                        this.props.handleChange("projectSummary", this.projectSummary)
+                                    }}
+                                    name="projectDurationEnd"
+                                    dateFormat="yyyy-MM-dd"   
+                                    className="form-control"       
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-sm form-group flex">
+                        <b><label htmlFor="contProject">Continuing Project:</label></b>
+                        <select className="form-control" id="projectType" onChange={(event) => {
+                            this.projectSummary.isContinuingProject = event.target.value === 'true'? true : false
+
+                            this.props.handleChange("projectSummary", this.projectSummary)
+                        }} >
+                            
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="form-group">
+                    <b><label htmlFor="partnerOrganization">Partner Organization:</label></b>
+                    <input
+                    className="form-control"
+                    name="partnerOrganization"
+                    type="text"
+                    value={this.projectSummary.partnerOrganization}
+                    onChange={(event)=>{
+                        this.handleTextFieldChange(event)
+                    }}
+                    />
+                </div>
+
+                <div className="row">
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="beneficiaries">Beneficiaries:</label></b>
+                        <input
+                        className="form-control"
+                        name="beneficiaries"
+                        type="text"
+                        value={this.projectSummary.beneficiaries}
+                        onChange={(event)=>{
+                            this.handleTextFieldChange(event)
+                        }}
+                        />
+                    </div>
+
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="numBeneficiaries">Number of Beneficiaries:</label></b>
+                        <input
+                        className="form-control"
+                        name="numBeneficiaries"
+                        type="number"
+                        value={this.projectSummary.numBeneficiaries}
+                        onChange={(event)=>{
+                            this.handleTextFieldChange(event)
+                        }}
                         />
                     </div>
                 </div>
 
-                
+                <div className="row">
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="projectCost">Project Cost:</label></b>
+                        <input
+                        className="form-control"
+                        name="projectCost"
+                        type="number"
+                        value={this.projectSummary.projectCost}
+                        onChange={(event)=>{
+                            this.handleTextFieldChange(event)
+                        }}
+                        />
+                    </div>
+
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="fundSource">Fund Source:</label></b>
+                        <input
+                        className="form-control"
+                        name="fundSource"
+                        type="text"
+                        value={this.projectSummary.fundSource}
+                        onChange={(event)=>{
+                            this.handleTextFieldChange(event)
+                        }}
+                        />
+                    </div>
+                </div>
             </div>
         )
     }
