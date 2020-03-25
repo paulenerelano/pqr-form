@@ -13,8 +13,13 @@ export default class ActionPhotosForm extends Component {
     }
 
     onDrop = files => {
-        console.log(files)
-        this.actionPhotos = this.actionPhotos.concat(files)
+        files.map((file) => {
+            Object.assign(file, {preview: URL.createObjectURL(file)})
+            this.actionPhotos.push(file)
+
+            return null;
+        })
+        console.log(this.actionPhotos)
 
         this.props.handleChange("actionPhotos", this.actionPhotos)
     };
@@ -32,6 +37,7 @@ export default class ActionPhotosForm extends Component {
                 <div className="action-photo-dropzone-container"> 
                     <ReactDropzone 
                         onDrop={this.onDrop}
+                        accept='image/*'
                     >
                         {({getRootProps, getInputProps}) => (
                             <div {...getRootProps()} 
@@ -43,11 +49,10 @@ export default class ActionPhotosForm extends Component {
                             </div>
                         )}
                     </ReactDropzone>
-                    <div className="dropzone-preview">
+                    <div className="action-photo-preview-container">
                         {this.actionPhotos.map((file) => {
-                            console.log(file)
                             return (<img
-                                alt="Preview"
+                                alt={file.name}
                                 key={file.preview}
                                 src={file.preview}
                                 className="action-photo-preview"

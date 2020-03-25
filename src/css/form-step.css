@@ -52,7 +52,15 @@
     padding: 10%;
 }
 
+.action-photo-preview-container {
+    display: flex;
+}
+
 .action-photo-preview {
-    height: 5em;
-    width: 5em;
+    display: block;
+    max-width:300x;
+    max-height:120px;
+    width: auto;
+    height: auto;
+    margin: 1em;
 }
