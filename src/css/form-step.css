@@ -51,3 +51,8 @@
     text-align: center;
     padding: 10%;
 }
+
+.action-photo-preview {
+    height: 5em;
+    width: 5em;
+}

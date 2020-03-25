@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactDropzone from "react-dropzone";
 
 import '../css/form-step.css';
@@ -13,7 +13,8 @@ export default class ActionPhotosForm extends Component {
     }
 
     onDrop = files => {
-        this.actionPhotos.photos.concat(files)
+        console.log(files)
+        this.actionPhotos = this.actionPhotos.concat(files)
 
         this.props.handleChange("actionPhotos", this.actionPhotos)
     };
@@ -43,22 +44,15 @@ export default class ActionPhotosForm extends Component {
                         )}
                     </ReactDropzone>
                     <div className="dropzone-preview">
-                        {() => {
-                            if (this.actionPhotos.photos.length > 0) {
-                                return (
-                                    <Fragment>
-                                        {this.actionPhotos.photos.map(file => (
-                                        <img
-                                            alt="Preview"
-                                            key={file.preview}
-                                            src={file.preview}
-                                            className="action-photo-preview"
-                                        />
-                                        ))}
-                                    </Fragment>
-                                )
-                            }
-                        }}
+                        {this.actionPhotos.map((file) => {
+                            console.log(file)
+                            return (<img
+                                alt="Preview"
+                                key={file.preview}
+                                src={file.preview}
+                                className="action-photo-preview"
+                            />)
+                        })}
                     </div>
                 </div>
             </div>

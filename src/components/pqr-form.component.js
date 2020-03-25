@@ -14,7 +14,7 @@ export default class PQRForm extends Component {
 
         // set initial values
         this.state = {
-            step: 1,
+            step: 4,
 
             // Rotaract Info Form
             rotaractInfo: {
@@ -49,9 +49,7 @@ export default class PQRForm extends Component {
             },
 
             // Action Photos Form
-            actionPhotos: {
-                photos: [],
-            }
+            actionPhotos: []
         }
     }
 
