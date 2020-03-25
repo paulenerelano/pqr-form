@@ -19,48 +19,32 @@ export default class ActionPhotosForm extends Component {
         this.props.handleChange("actionPhotos", this.actionPhotos)
     }
 
-    onPreviewDrop = (photos) => {
-        this.actionPhotos.photos = this.actionPhotos.photos.concat(photos)
-    }
+    onDrop = files => {
+        console.log("onDrop")
+    };
 
-    render() {
-        if (this.props.currentStep !== this.STEP_NUM) {
-            return null;
-        }
-
-        const dropzoneStyle = {
-            width  : "20%",
-            height : "150px",
-            border : "1px solid black",
-            
-        };
-        const dropzoneStyleActive = {
-            width  : "20%",
-            height : "150px",
-            border : "5px solid green"
-        };
-
+    
+      render() {
         return (
             <div>
                 <h2 className="step-name">{this.props.stepName}</h2>
                 <br/>
-                <div className="dropzone-container">
-                    <ReactDropzone
-                        onDrop={this.onPreviewDrop}
-                        styles={dropzoneStyle}
-                        children={()=>{
-                            return (
-                                <Fragment>
-                                    <p>Please include action photos to support the execution. Max. of 4 photos.</p>
-                                    <p>For sister/friendship club agreement, please attached a photo of your agreement</p>
-                                    </Fragment>
-                                );
-                        }}
+                <div className="action-photo-dropzone-container"> 
+                    <ReactDropzone 
+                        onDrop={this.onDrop}
                     >
+                        {({getRootProps, getInputProps}) => (
+                            <div {...getRootProps()} 
+                                className="action-photo-dropzone-inner"
+                            >
+                                <input {...getInputProps()} />
+                                <p>Please drag action photos which supports the execution. Max. of 4 photos.
+                                    For sister/friendship club agreement, please attach a photo of your agreement.</p>
+                            </div>
+                        )}
                     </ReactDropzone>
                 </div>
-                
             </div>
-        )
-    }
+        );
+      }
 }
