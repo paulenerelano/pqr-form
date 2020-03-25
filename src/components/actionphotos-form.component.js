@@ -12,21 +12,20 @@ export default class ActionPhotosForm extends Component {
         this.actionPhotos = this.props.actionPhotos;
     }
 
-    handleTextFieldChange(event) {
-        const {name, value} = event.target
-        this.actionPhotos[name] = value;
+    onDrop = files => {
+        this.actionPhotos.photos.concat(files)
 
         this.props.handleChange("actionPhotos", this.actionPhotos)
-    }
-
-    onDrop = files => {
-        console.log("onDrop")
     };
 
     
       render() {
+        if (this.props.currentStep !== this.STEP_NUM) {
+            return null;
+        }
+
         return (
-            <div>
+            <div className="form-group">
                 <h2 className="step-name">{this.props.stepName}</h2>
                 <br/>
                 <div className="action-photo-dropzone-container"> 
@@ -43,6 +42,24 @@ export default class ActionPhotosForm extends Component {
                             </div>
                         )}
                     </ReactDropzone>
+                    <div className="dropzone-preview">
+                        {() => {
+                            if (this.actionPhotos.photos.length > 0) {
+                                return (
+                                    <Fragment>
+                                        {this.actionPhotos.photos.map(file => (
+                                        <img
+                                            alt="Preview"
+                                            key={file.preview}
+                                            src={file.preview}
+                                            className="action-photo-preview"
+                                        />
+                                        ))}
+                                    </Fragment>
+                                )
+                            }
+                        }}
+                    </div>
                 </div>
             </div>
         );
