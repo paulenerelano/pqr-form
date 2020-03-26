@@ -28,11 +28,19 @@ export default class RotaractInfoForm extends Component {
         return (
             <div>
                 <h2 className="step-name">{this.props.stepName}</h2>
+                <div className="progress">
+                    <div class="progress-bar progress-bar-striped" 
+                        role="progressbar" 
+                        style={{width: this.props.progressWidth + '%' }}>
+                    {this.props.progressWidth + '%'}
+                    </div>
+                </div>
                 <br/>
                 <div className="form-group">
                     <b><label htmlFor="rotaractClubName">Rotaract Club Name:</label></b>
                     <input
                     className="form-control"
+                    id="rotaractClubName"
                     name="rotaractClubName"
                     type="text"
                     value={this.rotaractInfo.rotaractClubName}
@@ -46,6 +54,7 @@ export default class RotaractInfoForm extends Component {
                     <b><label htmlFor="sponsorClubName">Sponsoring Rotary Club:</label></b>
                     <input
                     className="form-control"
+                    id="sponsorClubName"
                     name="sponsorClubName"
                     type="text"
                     value={this.rotaractInfo.sponsorClubName}
@@ -56,10 +65,11 @@ export default class RotaractInfoForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <b><label htmlFor="club-name">Avenue of Service:</label></b>
+                    <b><label>Avenue of Service:</label></b>
                     <div className="input-group mb-3">
                         <FormBoxes
                             type="checkbox"
+                            name="avenue-of-service"
                             options={this.AVENUE_OF_SERVICE}
                             handleChange={(event) => {
                                 let name = event.target.name

@@ -27,6 +27,13 @@ export default class ProjectDetailsForm extends Component {
         return (
             <div>
                 <h2 className="step-name">{this.props.stepName}</h2>
+                <div className="progress">
+                    <div class="progress-bar progress-bar-striped" 
+                        role="progressbar" 
+                        style={{width: this.props.progressWidth + '%' }}>
+                    {this.props.progressWidth + '%'}
+                    </div>
+                </div>
                 <br/>
 
                 <div className="form-group">

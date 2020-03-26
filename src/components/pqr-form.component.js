@@ -12,6 +12,7 @@ export default class PQRForm extends Component {
 
         this.STEPS = ['', 'Rotaract Club Information', 'Project Summary', 'Project Details', 'Action Photos'];
 
+
         // set initial values
         this.state = {
             step: 1,
@@ -82,58 +83,74 @@ export default class PQRForm extends Component {
         })
     }
 
-    previousButton() {
-    let currentStep = this.state.step;
-    if(currentStep !== 1){
-        return (
-        <button 
-            className="btn btn-secondary" 
-            type="button" onClick={this._prev}>
-        Previous
-        </button>
-        )
+    _submit = () => {
+        // TODO
     }
-    return null;
+
+    previousButton() {
+        let currentStep = this.state.step;
+        if(currentStep !== 1){
+            return (
+            <button 
+                className="btn btn-nav float-left" 
+                type="button" onClick={this._prev}>
+            Previous
+            </button>
+            )
+        }
+        return null;
     }
     
     nextButton(){
-    let currentStep = this.state.step;
-    if(currentStep < this.STEPS.length - 1){
+        let currentStep = this.state.step;
+        if(currentStep < this.STEPS.length - 1){
+            return (
+            <button 
+                className="btn btn-nav float-right" 
+                type="button" onClick={this._next}>
+                Next
+            </button>        
+            )
+        }
         return (
-        <button 
-            className="btn btn-primary float-right" 
-            type="button" onClick={this._next}>
-        Next
-        </button>        
+            <button 
+                className="btn btn-nav float-right" 
+                type="button" onClick={this._submit}>
+                Submit
+            </button> 
         )
-    }
-    return null;
     }
 
     render() {
+        let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length-1));
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <RotaractInfoForm
                         stepName={this.STEPS[this.state.step]}
+                        progressWidth={progressWidth}
                         currentStep={this.state.step}
                         handleChange={this.handleChange}
                         rotaractInfo={this.state.rotaractInfo}
                     />
                     <ProjectSummaryForm
                         stepName={this.STEPS[this.state.step]}
+                        progressWidth={progressWidth}
                         currentStep={this.state.step}
                         handleChange={this.handleChange}
                         projectSummary={this.state.projectSummary}
                     />
                     <ProjectDetailsForm
                         stepName={this.STEPS[this.state.step]}
+                        progressWidth={progressWidth}
                         currentStep={this.state.step}
                         handleChange={this.handleChange}
                         projectDetails={this.state.projectDetails}
                     />
                     <ActionPhotosForm
                         stepName={this.STEPS[this.state.step]}
+                        progressWidth={progressWidth}
                         currentStep={this.state.step}
                         handleChange={this.handleChange}
                         actionPhotos={this.state.actionPhotos}

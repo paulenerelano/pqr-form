@@ -52,6 +52,13 @@ export default class ProjectSummaryForm extends Component {
         return (
             <div>
                 <h2 className="step-name">{this.props.stepName}</h2>
+                <div className="progress">
+                    <div class="progress-bar progress-bar-striped" 
+                        role="progressbar" 
+                        style={{width: this.props.progressWidth + '%' }}>
+                    {this.props.progressWidth + '%'}
+                    </div>
+                </div>
                 <br/>
                 <div className="form-group">
                     <b><label htmlFor="club-name">Name:</label></b>
@@ -80,10 +87,11 @@ export default class ProjectSummaryForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <b><label htmlFor="club-name">Category:</label></b>
+                    <b><label>Category:</label></b>
                     <div className="input-group mb-3">
                         <FormBoxes
                             type="checkbox"
+                            name="category"
                             options={this.PROJ_CATEGORY}
                             handleChange={(event) => {
                                 let name = event.target.name

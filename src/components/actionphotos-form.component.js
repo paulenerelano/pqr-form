@@ -33,6 +33,13 @@ export default class ActionPhotosForm extends Component {
         return (
             <div className="form-group">
                 <h2 className="step-name">{this.props.stepName}</h2>
+                <div className="progress">
+                    <div class="progress-bar progress-bar-striped" 
+                        role="progressbar" 
+                        style={{width: this.props.progressWidth + '%' }}>
+                    {this.props.progressWidth + '%'}
+                    </div>
+                </div>
                 <br/>
                 <div className="action-photo-dropzone-container"> 
                     <ReactDropzone 
