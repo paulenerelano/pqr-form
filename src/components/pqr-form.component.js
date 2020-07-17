@@ -19,8 +19,8 @@ export default class PQRForm extends Component {
 
             // Rotaract Info Form
             rotaractInfo: {
-                rotaractClubName: '',
-                sponsorClubName: '',
+                rotaractClubName: 'Alabang Madrigal Business Park',
+                sponsorClubName: 'Alabang Madrigal Business Park',
                 avenueOfService: [],
             },
 
@@ -55,11 +55,10 @@ export default class PQRForm extends Component {
     }
 
     handleChange = (name, value) => {
-        console.log(this.state)
         this.setState({
             [name]: value
-        })  
-        console.log(this.state)  
+        })
+        // console.log(this.state)
     }
 
     handleSubmit = (event) => {
@@ -74,10 +73,10 @@ export default class PQRForm extends Component {
             step: currentStep
         })
     }
-    
+
     _prev = () => {
         let currentStep = this.state.step
-        currentStep = currentStep <= 1? 1: currentStep - 1
+        currentStep = currentStep <= 1 ? 1 : currentStep - 1
         this.setState({
             step: currentStep
         })
@@ -89,40 +88,40 @@ export default class PQRForm extends Component {
 
     previousButton() {
         let currentStep = this.state.step;
-        if(currentStep !== 1){
+        if (currentStep !== 1) {
             return (
-            <button 
-                className="btn btn-nav float-left" 
-                type="button" onClick={this._prev}>
-            Previous
-            </button>
+                <button
+                    className="btn btn-nav float-left"
+                    type="button" onClick={this._prev}>
+                    Previous
+                </button>
             )
         }
         return null;
     }
-    
-    nextButton(){
+
+    nextButton() {
         let currentStep = this.state.step;
-        if(currentStep < this.STEPS.length - 1){
+        if (currentStep < this.STEPS.length - 1) {
             return (
-            <button 
-                className="btn btn-nav float-right" 
-                type="button" onClick={this._next}>
-                Next
-            </button>        
+                <button
+                    className="btn btn-nav float-right"
+                    type="button" onClick={this._next}>
+                    Next
+                </button>
             )
         }
         return (
-            <button 
-                className="btn btn-nav float-right" 
+            <button
+                className="btn btn-nav float-right"
                 type="button" onClick={this._submit}>
                 Submit
-            </button> 
+            </button>
         )
     }
 
     render() {
-        let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length-1));
+        let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length - 1));
 
         return (
             <div>
