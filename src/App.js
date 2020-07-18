@@ -5,8 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 
 import PQRForm from './components/pqr-form.component.js';
+import Login from './screens/login';
 
 class App extends Component {
+
   render () {
     return (
       <div className="container">
@@ -21,7 +23,8 @@ class App extends Component {
           </div>
         </nav>
         <br/>
-        <PQRForm/>
+        {/* <PQRForm/> */}
+        <Login/>
       </div>
     );
   }

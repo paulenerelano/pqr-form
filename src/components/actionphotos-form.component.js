@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDropzone from "react-dropzone";
 
+import '../css/App.css';
 import '../css/form-step.css';
 
 export default class ActionPhotosForm extends Component {

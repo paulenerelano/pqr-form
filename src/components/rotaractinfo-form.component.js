@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import '../css/App.css';
 import '../css/form-step.css';
 import FormBoxes from './formboxes.component';
 
