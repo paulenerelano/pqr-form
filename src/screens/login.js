@@ -41,7 +41,7 @@ class Login extends Component {
         }
 
         // REDIRECT TO PQR FORM
-        this.props.history.push('/form')
+        this.props.history.push('/project')
 
     }
 
