@@ -21,7 +21,7 @@ export default class ProjectSummaryForm extends Component {
         this.LEVEL_OF_PARTICIPATION = ['Organizer', 'Committee', 'Participant', 'Partner', 'Sponsor'];
         this.AVENUE_DETAILS = {
             'Club': [
-                { name: "Club meeting/fellowship", check: true, disable: false },
+                { name: "Club meeting/fellowship", check: false, disable: false },
                 { name: "Club Induction (District 3830)", check: false, disable: false },
                 { name: "Membership development and retention", check: false, disable: false },
                 { name: "Public Image", check: false, disable: false },
