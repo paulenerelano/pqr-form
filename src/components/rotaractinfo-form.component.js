@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import '../css/App.css';
 import '../css/form-step.css';
-import FormBoxes from './formboxes.component';
 
 export default class RotaractInfoForm extends Component {
 
@@ -10,7 +9,6 @@ export default class RotaractInfoForm extends Component {
         super(props);
 
         this.STEP_NUM = 1;
-        this.AVENUE_OF_SERVICE = ['Club', 'Community', 'Professional', 'International']
         this.rotaractInfo = this.props.rotaractInfo;
         this.PROJ_TYPE = [
             "Alabang Madrigal Business Park",
@@ -245,33 +243,6 @@ export default class RotaractInfoForm extends Component {
                             this.handleTextFieldChange(event)
                         }}
                     />
-                </div>
-
-                <div className="form-group">
-                    <b><label>Avenue of Service:</label></b>
-                    <div className="input-group mb-3">
-                        <FormBoxes
-                            type="checkbox"
-                            name="avenue-of-service"
-                            options={this.AVENUE_OF_SERVICE}
-                            handleChange={(event) => {
-                                let name = event.target.name
-                                let index = this.rotaractInfo.avenueOfService.indexOf(name);
-
-                                if (event.target.checked) {
-                                    if (index === -1) {
-                                        this.rotaractInfo.avenueOfService.push(name);
-                                    }
-                                } else {
-                                    if (index > -1) {
-                                        this.rotaractInfo.avenueOfService.splice(index, 1);
-                                    }
-                                }
-
-                                this.props.handleChange("rotaractInfo", this.rotaractInfo)
-                            }}
-                        />
-                    </div>
                 </div>
             </div>
         )

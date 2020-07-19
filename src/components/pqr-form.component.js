@@ -22,13 +22,14 @@ class PQRForm extends Component {
             rotaractInfo: {
                 rotaractClubName: 'Alabang Madrigal Business Park',
                 sponsorClubName: 'Alabang Madrigal Business Park',
-                avenueOfService: [],
             },
 
             // Project Summary Form
             projectSummary: {
                 projectName: '',
                 venueOfProject: '',
+                levelOfParticipation: '',
+                avenueOfService: [],
                 category: [],
                 projectType: '',
                 projectDurationStart: '',
@@ -44,7 +45,6 @@ class PQRForm extends Component {
             // Project Details Form
             projectDetails: {
                 objectives: '',
-                levelOfParticipation: '',
                 numParticipatingMembers: 0,
                 numParticipatingRotarian: 0,
                 execution: '',
@@ -84,7 +84,7 @@ class PQRForm extends Component {
     }
 
     _submit = () => {
-        // TODO
+        console.log(this.state);
     }
 
     previousButton() {
@@ -92,7 +92,7 @@ class PQRForm extends Component {
         if (currentStep !== 1) {
             return (
                 <button
-                    className="btn btn-nav float-left"
+                    className="btn btn-nav "
                     type="button" onClick={this._prev}>
                     Previous
                 </button>
@@ -106,7 +106,7 @@ class PQRForm extends Component {
         if (currentStep < this.STEPS.length - 1) {
             return (
                 <button
-                    className="btn btn-nav float-right"
+                    className="btn btn-nav "
                     type="button" onClick={this._next}>
                     Next
                 </button>
@@ -156,8 +156,12 @@ class PQRForm extends Component {
                         actionPhotos={this.state.actionPhotos}
                     />
 
-                    {this.previousButton()}
-                    {this.nextButton()}
+
+
+                    <div className="d-flex">
+                        <div className="p-2">{this.previousButton()}</div>
+                        <div className="ml-auto p-2">{this.nextButton()}</div>
+                    </div>
                 </form>
             </div>
         )

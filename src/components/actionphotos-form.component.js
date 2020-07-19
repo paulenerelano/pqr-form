@@ -15,7 +15,7 @@ export default class ActionPhotosForm extends Component {
 
     onDrop = files => {
         files.map((file) => {
-            Object.assign(file, {preview: URL.createObjectURL(file)})
+            Object.assign(file, { preview: URL.createObjectURL(file) })
             this.actionPhotos.push(file)
 
             return null;
@@ -25,8 +25,8 @@ export default class ActionPhotosForm extends Component {
         this.props.handleChange("actionPhotos", this.actionPhotos)
     };
 
-    
-      render() {
+
+    render() {
         if (this.props.currentStep !== this.STEP_NUM) {
             return null;
         }
@@ -35,20 +35,20 @@ export default class ActionPhotosForm extends Component {
             <div className="form-group">
                 <h2 className="step-name">{this.props.stepName}</h2>
                 <div className="progress">
-                    <div class="progress-bar progress-bar-striped" 
-                        role="progressbar" 
-                        style={{width: this.props.progressWidth + '%' }}>
-                    {this.props.progressWidth + '%'}
+                    <div className="progress-bar progress-bar-striped"
+                        role="progressbar"
+                        style={{ width: this.props.progressWidth + '%' }}>
+                        {this.props.progressWidth + '%'}
                     </div>
                 </div>
-                <br/>
-                <div className="action-photo-dropzone-container"> 
-                    <ReactDropzone 
+                <br />
+                <div className="action-photo-dropzone-container">
+                    <ReactDropzone
                         onDrop={this.onDrop}
                         accept='image/*'
                     >
-                        {({getRootProps, getInputProps}) => (
-                            <div {...getRootProps()} 
+                        {({ getRootProps, getInputProps }) => (
+                            <div {...getRootProps()}
                                 className="action-photo-dropzone-inner"
                             >
                                 <input {...getInputProps()} />
@@ -70,5 +70,5 @@ export default class ActionPhotosForm extends Component {
                 </div>
             </div>
         );
-      }
+    }
 }

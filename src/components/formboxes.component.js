@@ -15,12 +15,14 @@ export default class FormBoxes extends Component {
                                 <input
                                     type={this.props.type}
                                     id={this.props.name + "-" + index}
-                                    name={this.props.type === "radio" ? this.props.radioGroup : option}
-                                    value={option}
+                                    name={this.props.type === "radio" ? this.props.radioGroup : option.name}
+                                    value={option.name}
+                                    disabled={option.disable}
+                                    checked={option.check}
                                     onChange={this.props.handleChange} />
                             </div>
                         </div>
-                        <div className="btn btn-static-box"><label htmlFor={this.props.name + "-" + index}>{option}</label></div>
+                        <div className="btn btn-static-box"><label htmlFor={this.props.name + "-" + index}>{option.name}</label></div>
                     </div>
                 )
             })

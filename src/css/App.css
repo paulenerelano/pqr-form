@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #a1c0c9;
 }
 
 @keyframes App-logo-spin {
@@ -39,7 +39,7 @@
 
 .navbar img {
   height: 100px;
-  width: 100px;
+  /* width: 100px; */
 }
 .navbar .navbar-brand{
  font-family: 'Arial Black';
