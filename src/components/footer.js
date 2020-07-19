@@ -25,7 +25,7 @@ Aside from participation in district activities, Rotaract clubs are required to 
             </div>
           </div>
         </div>
-        <div className="footer-copyright text-center py-3">© 2020 Copyright President Quarterly Report System
+        <div className="footer-copyright text-center py-3">© 2020 Copyright President's Quarterly Report System
         </div>
       </footer >
     )

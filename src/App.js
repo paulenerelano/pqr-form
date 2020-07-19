@@ -29,7 +29,7 @@ function App() {
         <br />
         <Switch>
           <Route path='/' exact component={Login} />
-          <Route path='/form' exact component={PQRForm} />
+          <Route path='/project' exact component={PQRForm} />
         </Switch>
       </div>
       <Footer />
