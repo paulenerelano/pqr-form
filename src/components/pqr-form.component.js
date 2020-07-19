@@ -4,8 +4,9 @@ import RotaractInfoForm from './rotaractinfo-form.component';
 import ProjectSummaryForm from './projectsummary-form.component';
 import ProjectDetailsForm from './projectdetails-form.component';
 import ActionPhotosForm from './actionphotos-form.component';
+import { withRouter } from 'react-router';
 
-export default class PQRForm extends Component {
+class PQRForm extends Component {
 
     constructor(props) {
         super(props);
@@ -162,3 +163,5 @@ export default class PQRForm extends Component {
         )
     }
 }
+
+export default withRouter(PQRForm)

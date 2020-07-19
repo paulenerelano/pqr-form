@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import history from './history';
 
 import logo from './media/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 
+
 import PQRForm from './components/pqr-form.component.js';
 import Login from './screens/login';
 
-class App extends Component {
+import { Router, Route, Switch } from 'react-router'
 
-  render () {
-    return (
+function App() {
+  return (
+    
+    <Router history={history}>
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a className="navbar-brand" href="https://rotary3830.org/">
@@ -23,11 +27,13 @@ class App extends Component {
           </div>
         </nav>
         <br/>
-        {/* <PQRForm/> */}
-        <Login/>
+        <Switch>
+          <Route path='/' exact component={Login} />
+          <Route path='/form' exact component={PQRForm} />
+        </Switch>
       </div>
-    );
-  }
+    </Router >
+  );
 }
 
 export default App;

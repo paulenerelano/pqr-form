@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 import '../css/App.css';
 
-export default class Login extends Component {
+class Login extends Component {
     ACCOUNT_INFO = {
         email : "admin@gmail.com",
         password: "admin"
@@ -40,6 +41,8 @@ export default class Login extends Component {
         }
 
         // REDIRECT TO PQR FORM
+        this.props.history.push('/form')
+        
     }
 
     handleChange = (event) => {
@@ -109,3 +112,5 @@ export default class Login extends Component {
         );
     }
 }
+
+export default  withRouter (Login);
