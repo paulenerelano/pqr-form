@@ -49,7 +49,15 @@ class PQRForm extends Component {
                 numParticipatingRotarian: 0,
                 execution: '',
             },
+            mediaDetails: {
+                mediaUrl: '',
+                label1: '',
+                label2: '',
+                label3: '',
+                label4: '',
+                actionPhotos: [],
 
+            },
             // Action Photos Form
             actionPhotos: []
         }
@@ -154,6 +162,7 @@ class PQRForm extends Component {
                         currentStep={this.state.step}
                         handleChange={this.handleChange}
                         actionPhotos={this.state.actionPhotos}
+                        mediaDetails={this.state.mediaDetails}
                     />
 
 

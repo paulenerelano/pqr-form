@@ -11,7 +11,7 @@ export default class FormBoxes extends Component {
                 return (
                     <div key={index} className="formboxes">
                         <div className="input-group-prepend">
-                            <div className="input-group-text">
+                            <div className={"input-group-text " + option.color}>
                                 <input
                                     type={this.props.type}
                                     id={this.props.name + "-" + index}

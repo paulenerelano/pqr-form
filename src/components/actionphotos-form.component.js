@@ -9,21 +9,40 @@ export default class ActionPhotosForm extends Component {
         super(props);
 
         this.STEP_NUM = 4
+        this.mediaDetails = this.props.mediaDetails;
+    }
 
-        this.actionPhotos = this.props.actionPhotos;
+    generateId = () => {
+        return '_' + Math.random().toString(36).substr(2, 9);
     }
 
     onDrop = files => {
+        if (files.length > 4 || (files.length + this.mediaDetails.actionPhotos.length) > 4) {
+            alert('Maximum of 4 photos only!');
+            return;
+        }
+
         files.map((file) => {
+            file['id'] = this.generateId();
             Object.assign(file, { preview: URL.createObjectURL(file) })
-            this.actionPhotos.push(file)
+            this.mediaDetails.actionPhotos.push(file)
 
             return null;
         })
-        console.log(this.actionPhotos)
 
-        this.props.handleChange("actionPhotos", this.actionPhotos)
+        this.props.handleChange("actionPhotos", this.mediaDetails)
     };
+
+    removeImage = (id) => {
+        const actionPhotos = [...this.mediaDetails.actionPhotos];
+
+        const filtered = actionPhotos.filter((item) => {
+            return item.id !== id;
+        });
+
+        this.mediaDetails.actionPhotos = [...filtered];
+        this.props.handleChange("actionPhotos", this.mediaDetails)
+    }
 
 
     render() {
@@ -42,6 +61,19 @@ export default class ActionPhotosForm extends Component {
                     </div>
                 </div>
                 <br />
+                <div className="form-group">
+                    <b><label htmlFor="club-name">Media URL</label></b>
+                    <input
+                        className="form-control"
+                        name="mediaUrl"
+                        type="text"
+                        value={this.mediaDetails.mediaUrl}
+                        onChange={(event) => {
+                            this.handleTextFieldChange(event)
+                        }}
+                    />
+                </div>
+                <br />
                 <div className="action-photo-dropzone-container">
                     <ReactDropzone
                         onDrop={this.onDrop}
@@ -58,14 +90,71 @@ export default class ActionPhotosForm extends Component {
                         )}
                     </ReactDropzone>
                     <div className="action-photo-preview-container">
-                        {this.actionPhotos.map((file) => {
+                        {this.mediaDetails.actionPhotos.map((file) => {
                             return (<img
                                 alt={file.name}
                                 key={file.preview}
                                 src={file.preview}
+                                onClick={() => this.removeImage(file.id)}
                                 className="action-photo-preview"
                             />)
                         })}
+                    </div>
+                </div>
+                <br />
+                <div className="row">
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="label1">Label 1</label></b>
+                        <input
+                            className="form-control"
+                            name="label1"
+                            type="text"
+                            value={this.mediaDetails.label1}
+                            onChange={(event) => {
+                                this.handleTextFieldChange(event)
+                            }}
+                        />
+                    </div>
+
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="label1">Label 2</label></b>
+                        <input
+                            className="form-control"
+                            name="label2"
+                            type="text"
+                            value={this.mediaDetails.label2}
+                            onChange={(event) => {
+                                this.handleTextFieldChange(event)
+                            }}
+                        />
+                    </div>
+                </div>
+                <br />
+                <div className="row">
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="label1">Label 3</label></b>
+                        <input
+                            className="form-control"
+                            name="label3"
+                            type="text"
+                            value={this.mediaDetails.label3}
+                            onChange={(event) => {
+                                this.handleTextFieldChange(event)
+                            }}
+                        />
+                    </div>
+
+                    <div className="col-sm form-group">
+                        <b><label htmlFor="label1">Label 4</label></b>
+                        <input
+                            className="form-control"
+                            name="label4"
+                            type="text"
+                            value={this.mediaDetails.label4}
+                            onChange={(event) => {
+                                this.handleTextFieldChange(event)
+                            }}
+                        />
                     </div>
                 </div>
             </div>
