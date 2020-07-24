@@ -12,6 +12,13 @@ export default class ActionPhotosForm extends Component {
         this.mediaDetails = this.props.mediaDetails;
     }
 
+    handleTextFieldChange(event) {
+        const { name, value } = event.target
+        this.mediaDetails[name] = value;
+
+        this.props.handleChange("mediaDetails", this.mediaDetails)
+    }
+
     generateId = () => {
         return '_' + Math.random().toString(36).substr(2, 9);
     }
