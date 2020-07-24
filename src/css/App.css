@@ -74,3 +74,16 @@
   color: white;
   background-color: #D52369;
 }
+
+p {
+  margin-bottom: 0.25rem;
+}
+
+.action-photo-preview {
+  display: block;
+  max-width:300px;
+  max-height:120px;
+  width: auto;
+  height: auto;
+  margin: 1em;
+}

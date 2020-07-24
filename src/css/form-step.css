@@ -68,12 +68,3 @@
     display: flex;
     overflow: auto;
 }
-
-.action-photo-preview {
-    display: block;
-    max-width:300x;
-    max-height:120px;
-    width: auto;
-    height: auto;
-    margin: 1em;
-}

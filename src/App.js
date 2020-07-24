@@ -8,6 +8,7 @@ import './css/App.css';
 
 import PQRForm from './components/pqr-form.component.js';
 import Login from './screens/login';
+import Confirmation from './screens/confirmation';
 import Footer from './components/footer';
 
 import { Router, Route, Switch } from 'react-router'
@@ -30,6 +31,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Login} />
           <Route path='/project' exact component={PQRForm} />
+          <Route path='/confirmation' exact component={Confirmation} />
         </Switch>
       </div>
       <Footer />

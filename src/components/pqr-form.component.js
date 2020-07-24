@@ -4,6 +4,7 @@ import RotaractInfoForm from './rotaractinfo-form.component';
 import ProjectSummaryForm from './projectsummary-form.component';
 import ProjectDetailsForm from './projectdetails-form.component';
 import ActionPhotosForm from './actionphotos-form.component';
+import Confirmation from '../screens/confirmation'
 import { withRouter } from 'react-router';
 
 class PQRForm extends Component {
@@ -17,6 +18,7 @@ class PQRForm extends Component {
         // set initial values
         this.state = {
             step: 1,
+            submitted: false, // TEMPORARY
 
             // Rotaract Info Form
             rotaractInfo: {
@@ -28,13 +30,13 @@ class PQRForm extends Component {
             projectSummary: {
                 projectName: '',
                 venueOfProject: '',
-                levelOfParticipation: '',
+                levelOfParticipation: 'Organizer',
                 avenueOfService: [],
                 category: [],
-                projectType: '',
-                projectDurationStart: '',
-                projectDurationEnd: '',
-                isContinuingProject: false,
+                projectType: 'Sustainable (More than 1 R.Y.)',
+                projectDurationStart: null,
+                projectDurationEnd: null,
+                isContinuingProject: true,
                 partnerOrganization: '',
                 beneficiaries: '',
                 numBeneficiaries: 0,
@@ -67,7 +69,7 @@ class PQRForm extends Component {
         this.setState({
             [name]: value
         })
-        // console.log(this.state)
+        console.log(this.state)
     }
 
     handleSubmit = (event) => {
@@ -92,7 +94,11 @@ class PQRForm extends Component {
     }
 
     _submit = () => {
-        console.log(this.state);
+        this.setState({submitted: true})
+    }
+
+    _cancelConfirm = () => {
+        this.setState({submitted: false})
     }
 
     previousButton() {
@@ -131,47 +137,59 @@ class PQRForm extends Component {
 
     render() {
         let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length - 1));
+        let {submitted} = this.state
+
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <RotaractInfoForm
-                        stepName={this.STEPS[this.state.step]}
-                        progressWidth={progressWidth}
-                        currentStep={this.state.step}
-                        handleChange={this.handleChange}
-                        rotaractInfo={this.state.rotaractInfo}
+                {!submitted? 
+                    <form onSubmit={this.handleSubmit}>
+                        <RotaractInfoForm
+                            stepName={this.STEPS[this.state.step]}
+                            progressWidth={progressWidth}
+                            currentStep={this.state.step}
+                            handleChange={this.handleChange}
+                            rotaractInfo={this.state.rotaractInfo}
+                        />
+                        <ProjectSummaryForm
+                            stepName={this.STEPS[this.state.step]}
+                            progressWidth={progressWidth}
+                            currentStep={this.state.step}
+                            handleChange={this.handleChange}
+                            projectSummary={this.state.projectSummary}
+                        />
+                        <ProjectDetailsForm
+                            stepName={this.STEPS[this.state.step]}
+                            progressWidth={progressWidth}
+                            currentStep={this.state.step}
+                            handleChange={this.handleChange}
+                            projectDetails={this.state.projectDetails}
+                        />
+                        <ActionPhotosForm
+                            stepName={this.STEPS[this.state.step]}
+                            progressWidth={progressWidth}
+                            currentStep={this.state.step}
+                            handleChange={this.handleChange}
+                            actionPhotos={this.state.actionPhotos}
+                            mediaDetails={this.state.mediaDetails}
+                        />
+                        <div className="d-flex">
+                            <div className="p-2">{this.previousButton()}</div>
+                            <div className="ml-auto p-2">{this.nextButton()}</div>
+                        </div>
+                    </form>
+                    : null
+                }
+                {submitted?
+                    <Confirmation 
+                        rotaractInfo = {this.state.rotaractInfo} 
+                        projectSummary = {this.state.projectSummary}
+                        projectDetails = {this.state.projectDetails}
+                        mediaDetails = {this.state.mediaDetails}
+                        handleCancel = {this._cancelConfirm}
                     />
-                    <ProjectSummaryForm
-                        stepName={this.STEPS[this.state.step]}
-                        progressWidth={progressWidth}
-                        currentStep={this.state.step}
-                        handleChange={this.handleChange}
-                        projectSummary={this.state.projectSummary}
-                    />
-                    <ProjectDetailsForm
-                        stepName={this.STEPS[this.state.step]}
-                        progressWidth={progressWidth}
-                        currentStep={this.state.step}
-                        handleChange={this.handleChange}
-                        projectDetails={this.state.projectDetails}
-                    />
-                    <ActionPhotosForm
-                        stepName={this.STEPS[this.state.step]}
-                        progressWidth={progressWidth}
-                        currentStep={this.state.step}
-                        handleChange={this.handleChange}
-                        actionPhotos={this.state.actionPhotos}
-                        mediaDetails={this.state.mediaDetails}
-                    />
-
-
-
-                    <div className="d-flex">
-                        <div className="p-2">{this.previousButton()}</div>
-                        <div className="ml-auto p-2">{this.nextButton()}</div>
-                    </div>
-                </form>
+                    : null
+                }
             </div>
         )
     }
