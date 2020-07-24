@@ -31,6 +31,14 @@ class Confirmation extends Component {
         return (
             <div>
                 <h2 className="step-name">Confirmation</h2>
+                <div className="progress">
+                    <div className="progress-bar progress-bar-striped"
+                        role="progressbar"
+                        style={{ width: '100%' }}>
+                        100%
+                    </div>
+                </div>
+                <br/>
                 <div className="card">
                     <div className="card-body">
                         {/* Rotaract Club Information */}
