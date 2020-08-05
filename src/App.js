@@ -8,6 +8,8 @@ import './css/App.css';
 
 import Home from './components/home/home';
 import PQRForm from './components/project/projectmain';
+import Meeting from './components/meeting/meeting.main';
+import Fellowship from './components/fellowship/fellowship.main';
 import Login from './screens/login';
 import Confirmation from './screens/confirmation';
 import Footer from './components/common/footer';
@@ -32,6 +34,9 @@ function App() {
         <Switch>
           <Route path='/' exact component={Login} />
           <Route path='/project' exact component={PQRForm} />
+          <Route path='/meeting' exact component={Meeting} />
+          <Route path='/fellowship' exact component={Fellowship} />
+          <Route path='/meeting' exact component={Meeting} />
           <Route path='/home' exact component={Home} />
           <Route path='/confirmation' exact component={Confirmation} />
         </Switch>

@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import RotaractInfoForm from './rotaractinfo-form.component';
-import ProjectSummaryForm from './projectsummary-form.component';
-import ProjectDetailsForm from './projectdetails-form.component';
-import ActionPhotosForm from './actionphotos-form.component';
+import MeetingInfo from './meeting.info';
 import Confirmation from '../../screens/confirmation'
 
 class PQRForm extends Component {
 
     constructor(props) {
         super(props);
-        console.log('pqr home');
-        this.STEPS = ['', 'Rotaract Club Information', 'Project Summary', 'Project Details', 'Action Photos'];
-
 
         // set initial values
         this.state = {
@@ -23,57 +17,27 @@ class PQRForm extends Component {
             /**
              * date
              * venue
-             * photos: 1-4
+             * agenda
              * attendees
-             * public image url: array of string (can be from fb, ig, any website)
+             * number of club attendees
+             * total number of members
+             * Auto compute: %= (Total Attendance / Membership Base) x 100
              */
 
-            // Rotaract Info Form
-            mainInfo: {
-                fellowshipDate: '',
-                venue: '',
-                photos: [],
-                attendees: [],
-                imageUrls: [],
-            },
-
             // Project Summary Form
-            projectSummary: {
-                projectName: '',
-                venueOfProject: '',
-                levelOfParticipation: 'Organizer',
-                avenueOfService: [],
-                category: [],
-                projectType: 'Sustainable (More than 1 R.Y.)',
-                projectDurationStart: null,
-                projectDurationEnd: null,
-                isContinuingProject: true,
-                partnerOrganization: '',
-                beneficiaries: '',
-                numBeneficiaries: 0,
-                projectCost: 0,
-                fundSource: '',
+            meetingInfo: {
+                meetingDate: '',
+                venue: '',
+                agenda: '',
+                attendees: '',
+                numClubAttendees: 0,
+                numMember: 0,
             },
 
-            // Project Details Form
-            projectDetails: {
-                objectives: '',
-                numParticipatingMembers: 0,
-                numParticipatingRotarian: 0,
-                execution: '',
-            },
-            mediaDetails: {
-                mediaUrl: '',
-                label1: '',
-                label2: '',
-                label3: '',
-                label4: '',
-                actionPhotos: [],
-
-            },
-            // Action Photos Form
-            actionPhotos: []
         }
+
+        this.STEPS = ['', 'Meeting Information'];
+
     }
 
     handleChange = (name, value) => {
@@ -155,34 +119,12 @@ class PQRForm extends Component {
             <div>
                 {!submitted ?
                     <form onSubmit={this.handleSubmit}>
-                        <RotaractInfoForm
+                        <MeetingInfo
                             stepName={this.STEPS[this.state.step]}
                             progressWidth={progressWidth}
                             currentStep={this.state.step}
                             handleChange={this.handleChange}
-                            rotaractInfo={this.state.rotaractInfo}
-                        />
-                        <ProjectSummaryForm
-                            stepName={this.STEPS[this.state.step]}
-                            progressWidth={progressWidth}
-                            currentStep={this.state.step}
-                            handleChange={this.handleChange}
-                            projectSummary={this.state.projectSummary}
-                        />
-                        <ProjectDetailsForm
-                            stepName={this.STEPS[this.state.step]}
-                            progressWidth={progressWidth}
-                            currentStep={this.state.step}
-                            handleChange={this.handleChange}
-                            projectDetails={this.state.projectDetails}
-                        />
-                        <ActionPhotosForm
-                            stepName={this.STEPS[this.state.step]}
-                            progressWidth={progressWidth}
-                            currentStep={this.state.step}
-                            handleChange={this.handleChange}
-                            actionPhotos={this.state.actionPhotos}
-                            mediaDetails={this.state.mediaDetails}
+                            meetingInfo={this.state.meetingInfo}
                         />
                         <div className="d-flex">
                             <div className="p-2">{this.previousButton()}</div>

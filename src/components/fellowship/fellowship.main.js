@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import RotaractInfoForm from './rotaractinfo-form.component';
-import ProjectSummaryForm from './projectsummary-form.component';
-import ProjectDetailsForm from './projectdetails-form.component';
-import ActionPhotosForm from './actionphotos-form.component';
-import Confirmation from '../../screens/confirmation'
+// import RotaractInfoForm from './rotaractinfo-form.component';
+// import ProjectSummaryForm from './projectsummary-form.component';
+// import Confirmation from '../../screens/confirmation'
+
+/**
+* date
+* venue
+* photos: 1-4
+* attendees
+* public image url: array of string (can be from fb, ig, any website)
+*/
 
 class PQRForm extends Component {
 
@@ -20,20 +26,15 @@ class PQRForm extends Component {
             step: 1,
             submitted: false, // TEMPORARY
 
-            /**
-             * date
-             * venue
-             * agenda
-             * attendees
-             * number of club attendees
-             * total number of members
-             * Auto compute: %= (Total Attendance / Membership Base) x 100
-             */
+
 
             // Rotaract Info Form
-            rotaractInfo: {
-                rotaractClubName: 'Alabang Madrigal Business Park',
-                sponsorClubName: 'Alabang Madrigal Business Park',
+            mainInfo: {
+                fellowshipDate: '',
+                venue: '',
+                photos: [],
+                attendees: [],
+                imageUrls: [],
             },
 
             // Project Summary Form
@@ -146,13 +147,14 @@ class PQRForm extends Component {
     }
 
     render() {
-        let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length - 1));
-        let { submitted } = this.state
+        // let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length - 1));
+        // let { submitted } = this.state
 
 
         return (
             <div>
-                {!submitted ?
+                Fellowship TBD
+                {/* {!submitted ?
                     <form onSubmit={this.handleSubmit}>
                         <RotaractInfoForm
                             stepName={this.STEPS[this.state.step]}
@@ -199,7 +201,7 @@ class PQRForm extends Component {
                         handleCancel={this._cancelConfirm}
                     />
                     : null
-                }
+                } */}
             </div>
         )
     }
