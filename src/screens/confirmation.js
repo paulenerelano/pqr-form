@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
 
 import '../css/App.css';
 
 class Confirmation extends Component {
 
     handleSubmit = () => {
-        
+
 
     }
 
     getDateString = (date) => {
-        if (date === null || date === undefined)  {
+        if (date === null || date === undefined) {
             return "NA"
         }
 
-        return "" + date.getFullYear() + "-" + (date.getMonth()+1) + "-" + (date.getDay() + 1)
+        return "" + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (date.getDay() + 1)
     }
 
     render() {
-        let {rotaractInfo, 
-            projectSummary, 
-            projectDetails, 
+        let { rotaractInfo,
+            projectSummary,
+            projectDetails,
             mediaDetails,
             handleCancel
         } = this.props
@@ -38,7 +37,7 @@ class Confirmation extends Component {
                         100%
                     </div>
                 </div>
-                <br/>
+                <br />
                 <div className="card">
                     <div className="card-body">
                         {/* Rotaract Club Information */}
@@ -56,63 +55,63 @@ class Confirmation extends Component {
                     <div className="card-body">
                         {/* Project Summary */}
                         <h4>Project Summary</h4>
-                        <div className="dropdown-divider"></div>  
+                        <div className="dropdown-divider"></div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Name:&nbsp;</p>
                             <p>{projectSummary.projectName}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Venue:&nbsp;</p>
                             <p>{projectSummary.venueOfProject}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Level of Participation:&nbsp;</p>
                             <p>{projectSummary.levelOfParticipation}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Avenue of Service:&nbsp;</p>
                             {projectSummary.avenueOfService.map((value, index) => {
                                 return (index < projectSummary.avenueOfService.length - 1) ?
-                                        <p>{value + ", " }</p>:
-                                        <p>{value}</p>
-                            })}                           
-                        </div>  
+                                    <p>{value + ", "}</p> :
+                                    <p>{value}</p>
+                            })}
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Category:&nbsp;</p>
                             {projectSummary.category.map((value, index) => {
                                 return (index < projectSummary.category.length - 1) ?
-                                        <p>{value + ", " }</p>:
-                                        <p>{value}</p>
-                            })}                        
-                        </div>  
+                                    <p>{value + ", "}</p> :
+                                    <p>{value}</p>
+                            })}
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Type:&nbsp;</p>
                             <p>{projectSummary.projectType}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Project Duration:&nbsp;</p>
                             <p>{this.getDateString(projectSummary.projectDurationStart) + " to " + this.getDateString(projectSummary.projectDurationEnd)}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Continuing Project:&nbsp;</p>
                             <p>{projectSummary.isContinuingProjects ? "Yes" : "No"}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Partner Organization:&nbsp;</p>
                             <p>{projectSummary.partnerOrganization}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Benificiaries:&nbsp;</p>
                             <p>{projectSummary.beneficiaries}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Project Cost:&nbsp;</p>
                             <p>Php&nbsp;{projectSummary.projectCost}</p>
-                        </div>  
+                        </div>
                         <div className="d-flex">
                             <p className="font-weight-bold">Fund Source:&nbsp;</p>
                             <p>{projectSummary.fundSource}</p>
-                        </div>  
+                        </div>
                     </div>
                     <div className="card-body">
                         {/* Project Details */}
@@ -141,19 +140,19 @@ class Confirmation extends Component {
                         <div className="dropdown-divider"></div>
                         <div className="d-flex">
                             {mediaDetails.actionPhotos.map((file, index) => {
-                                let labelName = "label"+ (index + 1);
+                                let labelName = "label" + (index + 1);
                                 return (
                                     <div className="card"
-                                        style={{width: "25%"}}>
+                                        style={{ width: "25%" }}>
                                         <div className="card-header">
                                             {mediaDetails[labelName]}
                                         </div>
-                                        <img 
+                                        <img
                                             alt={file.name}
                                             key={file.preview}
                                             src={file.preview}
                                             className="card-img-top"
-                                            style={{width: "100%"}}></img>
+                                            style={{ width: "100%" }}></img>
                                     </div>
                                 )
                             })}
@@ -181,4 +180,4 @@ class Confirmation extends Component {
     }
 }
 
-export default withRouter(Confirmation);
+export default Confirmation;

@@ -6,12 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 
 
-import PQRForm from './components/pqr-form.component.js';
+import Home from './components/home/home';
+import PQRForm from './components/project/projectmain';
 import Login from './screens/login';
 import Confirmation from './screens/confirmation';
-import Footer from './components/footer';
+import Footer from './components/common/footer';
+import { Router, Switch, Route } from 'react-router-dom';
 
-import { Router, Route, Switch } from 'react-router'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Login} />
           <Route path='/project' exact component={PQRForm} />
+          <Route path='/home' exact component={Home} />
           <Route path='/confirmation' exact component={Confirmation} />
         </Switch>
       </div>

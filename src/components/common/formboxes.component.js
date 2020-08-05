@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import '../css/App.css';
-import '../css/form-step.css';
+import '../../css/form-step.css';
 
 export default class FormBoxes extends Component {
 

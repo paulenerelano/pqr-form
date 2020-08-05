@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import RotaractInfoForm from './rotaractinfo-form.component';
 import ProjectSummaryForm from './projectsummary-form.component';
 import ProjectDetailsForm from './projectdetails-form.component';
 import ActionPhotosForm from './actionphotos-form.component';
-import Confirmation from '../screens/confirmation'
-import { withRouter } from 'react-router';
+import Confirmation from '../../screens/confirmation'
 
 class PQRForm extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log('pqr home');
         this.STEPS = ['', 'Rotaract Club Information', 'Project Summary', 'Project Details', 'Action Photos'];
 
 
@@ -94,11 +94,11 @@ class PQRForm extends Component {
     }
 
     _submit = () => {
-        this.setState({submitted: true})
+        this.setState({ submitted: true })
     }
 
     _cancelConfirm = () => {
-        this.setState({submitted: false})
+        this.setState({ submitted: false })
     }
 
     previousButton() {
@@ -137,12 +137,12 @@ class PQRForm extends Component {
 
     render() {
         let progressWidth = (this.state.step - 1) * (100 / (this.STEPS.length - 1));
-        let {submitted} = this.state
+        let { submitted } = this.state
 
 
         return (
             <div>
-                {!submitted? 
+                {!submitted ?
                     <form onSubmit={this.handleSubmit}>
                         <RotaractInfoForm
                             stepName={this.STEPS[this.state.step]}
@@ -180,13 +180,13 @@ class PQRForm extends Component {
                     </form>
                     : null
                 }
-                {submitted?
-                    <Confirmation 
-                        rotaractInfo = {this.state.rotaractInfo} 
-                        projectSummary = {this.state.projectSummary}
-                        projectDetails = {this.state.projectDetails}
-                        mediaDetails = {this.state.mediaDetails}
-                        handleCancel = {this._cancelConfirm}
+                {submitted ?
+                    <Confirmation
+                        rotaractInfo={this.state.rotaractInfo}
+                        projectSummary={this.state.projectSummary}
+                        projectDetails={this.state.projectDetails}
+                        mediaDetails={this.state.mediaDetails}
+                        handleCancel={this._cancelConfirm}
                     />
                     : null
                 }
@@ -195,4 +195,4 @@ class PQRForm extends Component {
     }
 }
 
-export default withRouter(PQRForm)
+export default withRouter(PQRForm);

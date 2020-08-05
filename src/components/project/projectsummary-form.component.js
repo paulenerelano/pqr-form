@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import '../css/App.css';
-import '../css/form-step.css';
-import FormBoxes from './formboxes.component';
+import '../../css/form-step.css';
+import FormBoxes from '../common/formboxes.component';
 
 export default class ProjectSummaryForm extends Component {
 

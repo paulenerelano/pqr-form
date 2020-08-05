@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
 
 import '../css/App.css';
 
@@ -123,4 +122,4 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+export default Login;
